@@ -39,7 +39,7 @@
 
 <form data-abide novalidate>
     <div class="cell small-12">
-      <label>Height
+      <label>Height in Inches
         <input type="text" placeholder="1234" aria-describedby="exampleHelpTextNumber" required pattern="number">
         <span class="form-error">
           Yo, you had better fill this out, it's required.
@@ -50,7 +50,7 @@
 
     <form data-abide novalidate>
     <div class="cell small-12">
-      <label>Weight
+      <label>Weight in Pounds
         <input type="text" placeholder="1234" aria-describedby="exampleHelpTextNumber" required pattern="number">
         <span class="form-error">
           Yo, you had better fill this out, it's required.
@@ -60,6 +60,19 @@
     </div>
 </form>
 
+<div class="cell medium-6">
+  <label>Activity Level 
+    <select id="select" required>
+      <option value="sedentary">Sedentary: little or no exercise</option>
+      <option value="light">Light Activity: 1 to 3 hours of exercise or sports per week</option>
+      <option value="moderate">Moderate Activity: 4 to 6 hours of exercise or sports per week</option>
+      <option value="very">Very Active: 7 to 9 hours of exercise or sports per week</option>
+      <option value="extra">Extra Active: 10+ hours of exercise or sports per week</option>
+    </select>
+  </label>
+</div>
+</div>
+
 <button type="button" class="success button">Submit</button>
 
 
@@ -67,7 +80,7 @@
 <hr>
 <h3>What is your goal?</h3>
 
-<div class="button-group">
+<div id="goal-buttons" class="button-group">
   <a class="button">Weight Loss</a>
   <a class="button">Maintain Current Weight</a>
   <a class="button">Weight Gain</a>
