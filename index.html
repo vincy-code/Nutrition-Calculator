@@ -18,8 +18,8 @@
     <div class="cell medium-6">
       <label>Gender
         <select id="select" required>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
+          <option id="male" value="male">Male</option>
+          <option id="female" value="female">Female</option>
         </select>
       </label>
     </div>
@@ -28,7 +28,7 @@
   <form data-abide novalidate>
     <div class="cell small-12">
       <label>Age
-        <input type="text" placeholder="1234" aria-describedby="exampleHelpTextNumber" required pattern="number" name="age" id="#age">
+        <input type="text" placeholder="1234" aria-describedby="exampleHelpTextNumber" required pattern="number" name="age" id="age">
         <span class="form-error">
           Yo, you had better fill this out, it's required.
         </span>
