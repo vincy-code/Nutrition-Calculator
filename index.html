@@ -5,7 +5,6 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Foundation Starter Template</title>
-    <link rel="stylesheet" href="css/foundation.css" />
     <!-- Compressed CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
   </head>
@@ -15,6 +14,7 @@
     <br>
 
     <h3>Lets Get Started by Entering in the Following Information:</h3>
+    
     <div class="cell medium-6">
       <label>Gender
         <select id="select" required>
@@ -28,19 +28,19 @@
   <form data-abide novalidate>
     <div class="cell small-12">
       <label>Age
-        <input type="text" placeholder="1234" aria-describedby="exampleHelpTextNumber" required pattern="number" name="age">
+        <input type="text" placeholder="1234" aria-describedby="exampleHelpTextNumber" required pattern="number" name="age" id="#age">
         <span class="form-error">
           Yo, you had better fill this out, it's required.
         </span>
       </label>
       <p class="help-text" id="exampleHelpTextNumber">Here's how you use this input field!</p>
     </div>
-</form>
 
-<form data-abide novalidate>
+
+
     <div class="cell small-12">
       <label>Height in Inches
-        <input type="text" placeholder="1234" aria-describedby="exampleHelpTextNumber" required pattern="number" name="height">
+        <input type="text" placeholder="1234" aria-describedby="exampleHelpTextNumber" required pattern="number" name="height" id="height">
         <span class="form-error">
           Yo, you had better fill this out, it's required.
         </span>
@@ -48,31 +48,31 @@
       <p class="help-text" id="exampleHelpTextNumber">Here's how you use this input field!</p>
     </div>
 
-    <form data-abide novalidate>
+    
     <div class="cell small-12">
       <label>Weight in Pounds
-        <input type="text" placeholder="1234" aria-describedby="exampleHelpTextNumber" required pattern="number" name="weight">
+        <input type="text" placeholder="1234" aria-describedby="exampleHelpTextNumber" required pattern="number" name="weight" id="weight">
         <span class="form-error">
           Yo, you had better fill this out, it's required.
         </span>
       </label>
       <p class="help-text" id="exampleHelpTextNumber">Here's how you use this input field!</p>
     </div>
-</form>
 
-<form>
-<div class="cell medium-6">
-  <label name="af" id="af">Activity Level 
-    <select id="select" required>
+
+
+   <div class="cell medium-6">
+     <label name="af">Activity Level 
+      <select id="af" required>
       <option value="1.15">Sedentary: little or no exercise</option>
       <option value="1.2">Light Activity: 1 to 3 hours of exercise or sports per week</option>
       <option value="1.4">Moderate Activity: 4 to 6 hours of exercise or sports per week</option>
       <option value="1.6">Very Active: 7 to 9 hours of exercise or sports per week</option>
       <option value="1.8">Extra Active: 10+ hours of exercise or sports per week</option>
-    </select>
-  </label>
-</div>
-</div>
+      </select>
+     </label>
+   </div>
+
 </form>
 
 <button type="button" class="success button">Submit</button>
@@ -83,22 +83,22 @@
 <h3>What is your goal?</h3>
 
 <div id="goal-buttons" class="button-group">
-  <a class="button">Weight Loss</a>
-  <a class="button">Maintain Current Weight</a>
-  <a class="button">Weight Gain</a>
+  <a id="loss-button" class="button">Weight Loss</a>
+  <a id="maintain-button" class="button">Maintain Current Weight</a>
+  <a id="gain-button" class="button">Weight Gain</a>
 </div>
 
 <form>
 <div class="callout success">
   <h5>This is your calorie needs based on the goal you selected</h5>
-  <p name="Mifflin" id="Mifflin">1234 calories</p>
+  <p name="mifflin" id="mifflin">1234 calories</p>
 </div>
 </form>
 
 <br>
 <hr>
 
-<h3>Now, Lets Create a Meal Plan Based on Your Calorie Needs</h3>
+<h3>Now, Lets Create a Meal Plan Based on Your Calorie Needs:</h3>
 <br>
 <a class="expanded button" href="#0">Magic Meal Plan Generating Button</a>
 
@@ -129,14 +129,9 @@
 
 
 <!-- Compressed JavaScript -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/what-input.js"></script>
-    <script src="js/vendor/foundation.min.js"></script>
-    <script src="script.js"></script>
-    <script>
-      $(document).foundation();
-    </script>
+<script src="script.js"></script>
 
   </body>
 </html>

@@ -14,15 +14,21 @@ var nutritionixApi =
 
 //females
 function calculateMifflin() {
-  var age = eval(document.form.age.value);
-  var weight = eval(document.form.weight.value);
-  var height = eval(document.form.height.value);
-  var af = eval(document.form.af.value);
+  //   var age = eval(document.form.age.value);
+  //   var weight = eval(document.form.weight.value);
+  //   var height = eval(document.form.height.value);
+  //   var af = eval(document.form.af.value);
+  var age = $("#age").val;
+  var weight = $("#weight").val;
+  var height = $("#height").val;
+  var af = $("#af").val;
   var weight2 = (weight / 2.2) * 10;
   var height2 = height * 2.54 * 6.25;
   var age2 = age * 5;
-  var Mifflin = (weight2 + height2 - age2 - 161) * af;
-  document.form.Mifflin.value = custRound(Mifflin, 1);
+  var mifflin = (weight2 + height2 - age2 - 161) * af;
+  //   document.form.Mifflin.value = custRound(Mifflin, 1);
+  $("#mifflin") = custRound(mifflin, 1);
+  console.log(mifflin);
 }
 
 function custRound(x, places) {
@@ -39,6 +45,11 @@ function calculateMifflinM() {
   var weight2M = (weight / 2.2) * 10;
   var height2M = height * 2.54 * 6.25;
   var age2M = age * 5;
-  var Mifflin = (weight2M + height2M - age2M - 5) * af;
-  document.form.Mifflin.value = custRound(Mifflin, 1);
+  var mifflin = (weight2M + height2M - age2M - 5) * af;
+  document.form.mifflin.value = custRound(mifflin, 1);
+  console.log(mifflin);
 }
+
+$("#loss-button").on("click", function () {
+  calculateMifflin();
+});
