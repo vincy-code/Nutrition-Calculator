@@ -1,11 +1,15 @@
+$( document ).ready(function() {
+
+
 var fdcApi =
   "https://api.nal.usda.gov/fdc/v1/foods/search?api_key=93FB5ZkYGDf50t9MdkGtFJZSj09FqLI9engO84mR&query=Cheddar%20Cheese";
+
+ var fdcAPIList =  "https://api.nal.usda.gov/fdc/v1/foods/list?api_key=93FB5ZkYGDf50t9MdkGtFJZSj09FqLI9engO84mR"
+
 
 var nutritionixApi =
   "https://trackapi.nutritionix.com/v2/search/instant?detailed=true&query=spaghettibolognese&api_key=fca954f6d34563952bd28e3af019024a";
 
-var maleSelect = $("#male");
-var femaleSelect = $("#female");
 var mifflin = " ";
 //When a goal is selected after entering in gender, age, height, and weight then calcuate calories
 //BMR calculated using Mifflin St Jeor Formula
@@ -94,4 +98,25 @@ $("#gain-button").on("click", function() {
   var finalEnergy = energyNeeds * 1.1;
   $("#mifflin").text(custRound(finalEnergy, 1) + " calories");
   console.log(finalEnergy);
+});
+
+//When generate meal plan button is clicked, the fdcAPI is searched and randomly grabs foods until the total calorie content of those foods is equal to the user's calculated calorie needs
+
+var settings = {
+  "url": "https://api.nal.usda.gov/fdc/v1/foods/list?pageNumber2&api_key=93FB5ZkYGDf50t9MdkGtFJZSj09FqLI9engO84mR",
+  "method": "GET",
+  "timeout": 0,
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+
+
+// $.ajax({
+//   url: fdcAPIList,
+//   method: "GET"
+// }).then(function(response) {
+//   console.log(response);
+// })
 });
