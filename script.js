@@ -14,11 +14,6 @@ var mifflin = " ";
 
 //females
 function calculateMifflin() {
-  if (femaleSelect) {
-    //   var age = eval(document.form.age.value);
-    //   var weight = eval(document.form.weight.value);
-    //   var height = eval(document.form.height.value);
-    //   var af = eval(document.form.af.value);
     var age = $("#age").val().trim();
     var weight = $("#weight").val().trim();
     var height = $("#height").val().trim();
@@ -27,10 +22,8 @@ function calculateMifflin() {
     var height2 = height * 2.54 * 6.25;
     var age2 = age * 5;
     mifflin = (weight2 + height2 - age2 - 161) * af;
-    //   document.form.Mifflin.value = custRound(Mifflin, 1);
-    $("#mifflin").text(custRound(mifflin, 1));
+    
     console.log(mifflin);
-  }
 }
 
 function custRound(x, places) {
@@ -39,11 +32,6 @@ function custRound(x, places) {
 
 //males
 function calculateMifflinM() {
-  if (maleSelect) {
-    // var age = eval(document.form.age.value);
-    // var weight = eval(document.form.weight.value);
-    // var height = eval(document.form.height.value);
-    // var af = eval(document.form.af.value);
     var age = $("#age").val().trim();
     var weight = $("#weight").val().trim();
     var height = $("#height").val().trim();
@@ -51,11 +39,9 @@ function calculateMifflinM() {
     var weight2M = (weight / 2.2) * 10;
     var height2M = height * 2.54 * 6.25;
     var age2M = age * 5;
-    var mifflin = (weight2M + height2M - age2M - 5) * af;
-    // document.form.mifflin.value = custRound(mifflin, 1);
-    $("#mifflin").text(custRound(mifflin, 1));
+    mifflin = (weight2M + height2M - age2M - 5) * af;
+
     console.log(mifflin);
-  }
 }
 
 //If user clicks Weight Loss multiply TDEE by 0.75
@@ -63,8 +49,9 @@ function calculateMifflinM() {
 //If user clicks Weight Gain, multiply TDEE by 1.1
 
 $("#loss-button").on("click", function() {
-    console.log(mifflin);
-    if(femaleSelect) {
+    var selectElement = $("#select");
+    var output = selectElement.val();
+    if(output === "female") {
         calculateMifflin();
         var energyNeeds = mifflin; 
     }
@@ -73,16 +60,38 @@ $("#loss-button").on("click", function() {
         var energyNeeds = mifflin;
     }
   var finalEnergy = energyNeeds * 0.75;
+  $("#mifflin").text(custRound(finalEnergy, 1) + " calories");
   console.log(finalEnergy);
 });
 
 $("#maintain-button").on("click", function() {
-  energyNeeds = calculateMifflin();
-  console.log(energyNeeds);
+    var selectElement = $("#select");
+    var output = selectElement.val();
+    if(output === "female") {
+        calculateMifflin();
+        var energyNeeds = mifflin; 
+    }
+    else {
+        calculateMifflinM();
+        var energyNeeds = mifflin;
+    }
+  var finalEnergy = energyNeeds;
+  $("#mifflin").text(custRound(finalEnergy, 1) + " calories");
+  console.log(finalEnergy);
 });
 
 $("#gain-button").on("click", function() {
-  energyNeeds = calculateMifflin();
-  energyNeeds * 1.1;
-  console.log(energyNeeds);
+    var selectElement = $("#select");
+    var output = selectElement.val();
+    if(output === "female") {
+        calculateMifflin();
+        var energyNeeds = mifflin; 
+    }
+    else {
+        calculateMifflinM();
+        var energyNeeds = mifflin;
+    }
+  var finalEnergy = energyNeeds * 1.1;
+  $("#mifflin").text(custRound(finalEnergy, 1) + " calories");
+  console.log(finalEnergy);
 });
