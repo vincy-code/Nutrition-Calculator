@@ -8,8 +8,8 @@ var fdcApi =
 
 
 var nutritionixApi =
-  "https://trackapi.nutritionix.com/v2/search/instant?detailed=true&query=spaghettibolognese&api_key=fca954f6d34563952bd28e3af019024a";
-
+  "https://trackapi.nutritionix.com/v2/search/instant?detailed=true&query=" + selectedFood + "&api_key=fca954f6d34563952bd28e3af019024a";
+// note!!!! "selectedFood" might need to change based on the var we decide to go with 
 var mifflin = " ";
 //When a goal is selected after entering in gender, age, height, and weight then calcuate calories
 //BMR calculated using Mifflin St Jeor Formula
@@ -102,21 +102,37 @@ $("#gain-button").on("click", function() {
 
 //When generate meal plan button is clicked, the fdcAPI is searched and randomly grabs foods until the total calorie content of those foods is equal to the user's calculated calorie needs
 
-var settings = {
+var fdcAPIFoodList = {
   "url": "https://api.nal.usda.gov/fdc/v1/foods/list?pageNumber2&api_key=93FB5ZkYGDf50t9MdkGtFJZSj09FqLI9engO84mR",
   "method": "GET",
   "timeout": 0,
 };
 
-$.ajax(settings).done(function (response) {
+$.ajax(fdcAPIFoodList).done(function (response) {
   console.log(response);
+  var obj_keys = Object.keys(response);
+  var ran_key = obj_keys[Math.floor(Math.random() *obj_keys.length)];
+  selectedFood = response[ran_key];
+  console.log(selectedFood);
+  var ctr = 0;
+  var found = false;
+  var kcal = 0;
+  // the while will cycle through the list of nutrients to find the kcal amount.
+  while (!found && ctr < selectedFood.foodNutrients.length) {
+    if(selectedFood.foodNutrients[ctr].unitName.toLowerCase() === "kcal") {
+      kcal = selectedFood.foodNutrients[ctr].amount;
+      found = true;
+    } else {ctr++}
+    //var foodEnergy = selectedFood.foodNutrients[0].amount;
+    //console.log(foodEnergy);
+    
+
+  }
+  console.log(`${ctr}: ${kcal}`);
+
 });
 
-
-// $.ajax({
-//   url: fdcAPIList,
-//   method: "GET"
-// }).then(function(response) {
-//   console.log(response);
-// })
+// build a json that stores the foods they would like then another json that stores the cal amount. 
+// respones list of food types 
+// create a cal peram to pull food
 });
