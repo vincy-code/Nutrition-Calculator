@@ -120,7 +120,6 @@
   //   console.log(selectedFood);
   // 
   
-  //   const foods = [];
   function getCalories(totalSoFar) {
     calorieGoal = Math.floor(finalEnergy);
     console.log("calorieGoal", calorieGoal);
@@ -144,9 +143,7 @@
         } else {
           ctr++;
         }
-        //var foodEnergy = selectedFood.foodNutrients[0].amount;
-        //console.log(foodEnergy);
-      }
+      };
       console.log("getCalories -> kcal", kcal);
       var lowRange = Math.floor(calorieGoal - calorieGoal * 0.1);
       var highRange = Math.ceil(calorieGoal + calorieGoal * 0.1);
@@ -166,13 +163,36 @@
         console.log("In the range");
         foods.push(`Food${kcal}`); // name or id of food from api
         totalCal = totalCal + kcal;
+        for(var i=0; i<foods.length; i++){
+        var p = document.createElement("p");
+        p.innerHTML = JSON.stringify(foods[i].description);
+        $("#meal-plan").append(p);
+      }
       }
       console.log(foods);
       return true;
+      
+     
     });
-  }
+
+   
+  };
 
  
 
   $("#mealBtn").on("click", () => getCalories(totalCal));
 
+  
+  
+  // displayRandomFoods();
+  //   function displayRandomFoods(){
+  //     if(calorieGoal === 0) {
+  //       alert("You must enter your information above");
+  //     } else {
+  //     for (var i=0; i < foods.length; i++) {
+  //     var p = $("<p>").attr("food", foods);
+  //     $("#meal-plan-" + i).append(p);
+  //     console.log(p);
+  //   }
+  //   }
+  //   }
