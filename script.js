@@ -161,11 +161,11 @@
       } else {
         // In range
         console.log("In the range");
-        foods.push(`Food${kcal}`); // name or id of food from api
+        foods.push(selectedFood); // name or id of food from api
         totalCal = totalCal + kcal;
         for(var i=0; i<foods.length; i++){
         var p = document.createElement("p");
-        p.innerHTML = JSON.stringify(foods[i].description);
+        p.innerHTML = JSON.stringify("Food Item: " + foods[i].description);
         $("#meal-plan").append(p);
       }
       }
@@ -184,15 +184,4 @@
 
   
   
-  // displayRandomFoods();
-  //   function displayRandomFoods(){
-  //     if(calorieGoal === 0) {
-  //       alert("You must enter your information above");
-  //     } else {
-  //     for (var i=0; i < foods.length; i++) {
-  //     var p = $("<p>").attr("food", foods);
-  //     $("#meal-plan-" + i).append(p);
-  //     console.log(p);
-  //   }
-  //   }
-  //   }
+ 
