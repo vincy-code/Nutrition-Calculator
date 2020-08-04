@@ -5,14 +5,28 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Foundation Starter Template</title>
+    <link rel="stylesheet" href="./style.css">
     <!-- Compressed CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
-  </head>
+
+</head>
   <body>
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li class="menu-text">Nutrition Pro Web App</li>
+          <li>
+            <a href="foodsearch.html">Food Database Search Engine</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+
     <h1>Calorie Calculator and Meal Plan Generator</h1>
     <hr>
     <br>
 
+   
     <h3>Lets Get Started by Entering in the Following Information:</h3>
     
     <div class="cell medium-6">
@@ -75,8 +89,6 @@
 
 </form>
 
-<button type="button" class="success button">Submit</button>
-
 
 <br>
 <hr>
@@ -102,7 +114,19 @@
 <br>
 <a id="mealBtn" class="expanded button" href="#0">Magic Meal Plan Generating Button</a>
 
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Meal plan has been generated. Please scroll down</p>
+  </div>
+
+</div>
+
 <div id= meal-plan></div>
+
+
 
 
 

@@ -1,16 +1,50 @@
   var totalCal = 0;
   let calorieGoal = 0;
   const foods = [];
-  var fdcApi =
-    "https://api.nal.usda.gov/fdc/v1/foods/search?api_key=93FB5ZkYGDf50t9MdkGtFJZSj09FqLI9engO84mR&query=Cheddar%20Cheese";
 
   var fdcAPIList =
     "https://api.nal.usda.gov/fdc/v1/foods/list?api_key=93FB5ZkYGDf50t9MdkGtFJZSj09FqLI9engO84mR";
 
-  // var nutritionixApi =
-  //   "https://trackapi.nutritionix.com/v2/search/instant?detailed=true&query=" + selectedFood + "&api_key=fca954f6d34563952bd28e3af019024a";
+   
+  var nutritionixApi = "https://api.nutritionix.com/v1_1/search/mcdonalds?results=0:20&fields=item_name,brand_name,item_id,nf_calories&appId=8646bb2c&appKey=fca954f6d34563952bd28e3af019024a"
+
+  // var nutritionixApi = `https://api.nutritionix.com/v1_1/search/${query}?&appId=8646bb2c&appKey=fca954f6d34563952bd28e3af019024a`
+ 
+ 
   // note!!!! "selectedFood" might need to change based on the var we decide to go with
+ 
   var mifflin = " ";
+
+
+  $("#search-btn").on("click", function(){
+    var query = $("#search-input").val().trim();
+    getFood(query);
+});
+
+function getFood(query) {
+  var queryURL = "https://api.nutritionix.com/v1_1/search/" + query + "?fields=item_name,brand_name,nf_calories&appId=8646bb2c&appKey=fca954f6d34563952bd28e3af019024a"; 
+
+  $.ajax({
+      url: queryURL,
+      method: "GET"
+  }).then(function(response) {
+      console.log(response);
+      for(var i=0; i<response.hits.length; i++) {
+        var div = document.createElement("div");
+        var p = document.createElement("p");
+        var p2 = document.createElement("p");
+        var hr = document.createElement("hr");
+        div.innerHTML = JSON.stringify("Brand: " + response.hits[i].fields.brand_name);
+        p.innerHTML = JSON.stringify(response.hits[i].fields.item_name);
+        p2.innerHTML = JSON.stringify(response.hits[i].fields.nf_calories + " calories");
+        hr.innerHTML = "";
+        $("#search-results").append(div);
+        $("#search-results").append(p);
+        $("#search-results").append(p2);
+        $("#search-results").append(hr);
+      }
+  });
+};
   //When a goal is selected after entering in gender, age, height, and weight then calcuate calories
   //BMR calculated using Mifflin St Jeor Formula
   //sedentary multiplier 1.15; light activity 1.2; moderate acitivity 1.4; very active 1.6; extra active 1.8
@@ -182,6 +216,22 @@
 
   $("#mealBtn").on("click", () => getCalories(totalCal));
 
+  var modal = document.getElementById("myModal");
+  var btn = document.getElementById("mealBtn");
+  var span = document.getElementsByClassName("close")[0];
+  btn.onclick = function () {
+    modal.style.display = "block";
+  };
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+
   
   
  
+  
