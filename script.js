@@ -3,7 +3,7 @@ let calorieGoal = 0;
 const foods = [];
 
 var fdcAPIList =
-  "https://api.nal.usda.gov/fdc/v1/foods/list?api_key=93FB5ZkYGDf50t9MdkGtFJZSj09FqLI9engO84mR";
+  "https://api.nal.usda.gov/fdc/v1/foods/list?branded_food&api_key=93FB5ZkYGDf50t9MdkGtFJZSj09FqLI9engO84mR";
 
 var nutritionixApi =
   "https://api.nutritionix.com/v1_1/search/mcdonalds?results=0:20&fields=item_name,brand_name,item_id,nf_calories&appId=8646bb2c&appKey=fca954f6d34563952bd28e3af019024a";
@@ -92,7 +92,7 @@ function calculateMifflin() {
   var age2 = age * 5;
   mifflin = (weight2 + height2 - age2 - 161) * af;
 
-  console.log(mifflin);
+  console.log("Calorie needs before goal= " + mifflin);
 }
 
 function custRound(x, places) {
@@ -110,7 +110,7 @@ function calculateMifflinM() {
   var age2M = age * 5;
   mifflin = (weight2M + height2M - age2M - 5) * af;
 
-  console.log(mifflin);
+  console.log("Calorie needs before goal= " + mifflin);
 }
 
 //If user clicks Weight Loss multiply TDEE by 0.75
@@ -130,7 +130,7 @@ $("#loss-button").on("click", function () {
   }
   finalEnergy = energyNeeds * 0.75;
   $("#mifflin").text(custRound(finalEnergy, 1) + " calories");
-  console.log(finalEnergy);
+  console.log("Calorie needs with goal= " + finalEnergy);
   return finalEnergy;
 });
 
@@ -146,7 +146,7 @@ $("#maintain-button").on("click", function () {
   }
   finalEnergy = energyNeeds;
   $("#mifflin").text(custRound(finalEnergy, 1) + " calories");
-  console.log(finalEnergy);
+  console.log("Calorie needs with goal= " + finalEnergy);
   return finalEnergy;
 });
 
@@ -162,7 +162,7 @@ $("#gain-button").on("click", function () {
   }
   finalEnergy = energyNeeds * 1.1;
   $("#mifflin").text(custRound(finalEnergy, 1) + " calories");
-  console.log(finalEnergy);
+  console.log("Calorie needs with goal= " + finalEnergy);
   return finalEnergy;
 });
 
@@ -176,14 +176,6 @@ var fdcAPIFoodList = {
 };
 
 //function will keep grabbing random food items and adding their calories together until it equals the user's calculated calorie needs or within +-10% (finalEnergy variable ex. 1800 calories)
-
-// $.ajax(fdcAPIFoodList).done(function (response) {
-//   console.log(response);
-//   var obj_keys = Object.keys(response);
-//   var ran_key = obj_keys[Math.floor(Math.random() *obj_keys.length)];
-//   selectedFood = response[ran_key];
-//   console.log(selectedFood);
-//
 
 function getCalories(totalSoFar) {
   calorieGoal = Math.floor(finalEnergy);
