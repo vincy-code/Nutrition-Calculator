@@ -1,65 +1,55 @@
 <!doctype html>
 <html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundation Starter Template</title>
-    <!-- Compressed CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Database Search Engine</title>
+
+  <!-- CSS Links -->
+
+  <link rel="stylesheet" href="./Assets/css/foundation.css">
+  <link rel="stylesheet" href="./Assets/css/style.css">
 
 </head>
-  <body>
-    <div class="top-bar">
-        <div class="top-bar-left">
-          <ul class="dropdown menu" data-dropdown-menu>
-            <li class="menu-text">
-                <a href="index.html">Nutrition Pro Web App</a>
-            </li>
-            <li>
-              <a href="foodsearch.html">Food Database Search Engine</a>
-            </li>
-          </ul>
-        </div>
-      </div>
 
-      <input id=search-input><a id="search-btn" class="button tiny">Search</a>
-      <br>
-      <div>
-      <a href="http://www.nutritionix.com/api"><img src="https://d2eawub7utcl6.cloudfront.net/images/poweredby_nutritionix_api.png" border="0"></a>
+<body>
+  <header>
+
+    <!-- Nav Bar -->
+
+    <ul>
+      <li><a href="./index.html">Nutrition Web App</a></li>
+      <li><a class="active" href="./foodsearch.html">Food Database Search</a></li>
+      <li style="float:right"><a href="./about.html">About</a></li>
+
+    </ul>
+
+    <h1>Food Database Search Engine</h1>
+
+  </header>
+
+  <hr><br>
+
+  <section class="container-dos">
+    <input id=search-input>
+    <div>
+      <a href="http://www.nutritionix.com/api"><img
+          src="https://d2eawub7utcl6.cloudfront.net/images/poweredby_nutritionix_api.png" border="0"></a>
     </div>
-<hr>
-<br>
-<div id="search-results"></div>
+    
+    <a id="search-btn" class="button medium">Search</a>
 
+    <div id="search-results"></div>
+  </section>
 
+  <!-- JavaScript Links -->
 
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"></script>
+  <script src="./Assets/JavaScript/script.js"></script>
 
+</body>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Compressed JavaScript -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
-<script src="script.js"></script>
-
-  </body>
 </html>
