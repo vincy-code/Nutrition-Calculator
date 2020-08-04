@@ -22,7 +22,7 @@
 });
 
 function getFood(query) {
-  var queryURL = "https://api.nutritionix.com/v1_1/search/" + query + "?fields=item_name,brand_name,nf_calories&appId=8646bb2c&appKey=fca954f6d34563952bd28e3af019024a"; 
+  var queryURL = "https://api.nutritionix.com/v1_1/search/" + query + "?fields=item_name,brand_name,nf_calories,nf_total_fat,nf_protein,nf_total_carbohydrate,nf_sodium,images_front_full_url&appId=8646bb2c&appKey=fca954f6d34563952bd28e3af019024a"; 
 
   $.ajax({
       url: queryURL,
@@ -33,15 +33,29 @@ function getFood(query) {
         var div = document.createElement("div");
         var p = document.createElement("p");
         var p2 = document.createElement("p");
+        var p3 = document.createElement("p");
+        var p4 = document.createElement("p");
+        var p5 = document.createElement("p");
+        var p6 = document.createElement("p");
         var hr = document.createElement("hr");
-        div.innerHTML = JSON.stringify("Brand: " + response.hits[i].fields.brand_name);
+        
+        div.innerHTML = JSON.stringify("Brand= " + response.hits[i].fields.brand_name);
         p.innerHTML = JSON.stringify(response.hits[i].fields.item_name);
-        p2.innerHTML = JSON.stringify(response.hits[i].fields.nf_calories + " calories");
+        p2.innerHTML = JSON.stringify(response.hits[i].fields.nf_calories + " calories" + " in " + response.hits[i].fields.nf_serving_size_qty + " " + response.hits[i].fields.nf_serving_size_unit);
+        p3.innerHTML = JSON.stringify("Protein= " + response.hits[i].fields.nf_protein + " g");
+        p4.innerHTML = JSON.stringify("Carbohydrate= " + response.hits[i].fields.nf_total_carbohydrate + " g");
+        p5.innerHTML = JSON.stringify("Fat= " + response.hits[i].fields.nf_total_fat + " g");
+        p6.innerHTML = JSON.stringify("Sodium= " + response.hits[i].fields.nf_sodium + " mg");
         hr.innerHTML = "";
         $("#search-results").append(div);
         $("#search-results").append(p);
         $("#search-results").append(p2);
+        $("#search-results").append(p3);
+        $("#search-results").append(p4);
+        $("#search-results").append(p5);
+        $("#search-results").append(p6);
         $("#search-results").append(hr);
+        
       }
   });
 };
