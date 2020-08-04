@@ -1,161 +1,159 @@
 <!doctype html>
 <html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundation Starter Template</title>
-    <link rel="stylesheet" href="./style.css">
-    <!-- Compressed CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Calorie Calculator & Meal Plan Generator</title>
+
+  <!-- CSS Links-->
+
+  <link rel="stylesheet" href="./Assets/css/foundation.css">
+  <link rel="stylesheet" href="./Assets/css/style.css">
 
 </head>
-  <body>
-    <div class="top-bar">
-      <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li class="menu-text">Nutrition Pro Web App</li>
-          <li>
-            <a href="foodsearch.html">Food Database Search Engine</a>
-            </li>
-        </ul>
+
+<body>
+  <header>
+    <!-- Nav Bar -->
+
+    <ul>
+      <li><a class="active" href="./index.html">Nutrition Web App</a></li>
+      <li><a href="foodsearch.html">Food Database Search</a></li>
+      <li style="float:right"><a href="./about.html">About</a></li>
+    </ul>
+  </header>
+
+
+
+  <!-- Header -->
+
+  <h1>Calorie Calculator and Meal Plan Generator</h1>
+
+  <hr>
+  <br>
+
+  <main>
+    <section class="container-uno">
+
+      <h2>Lets Get Started by Entering in the Following Information:</h2>
+
+      <!-- Gender Box -->
+
+      <!-- <form data-abide novalidate> -->
+      <div class="input-box">
+        <label>Gender
+          <select id="select" required>
+            <option id="male" value="male">Male</option>
+            <option id="female" value="female">Female</option>
+          </select>
+        </label>
+
+        <!-- Age Box -->
+
+        <label>Age
+          <input type="text" placeholder="1234" aria-describedby="exampleHelpTextNumber" required pattern="number"
+            name="age" id="age">
+          <span class="form-error">
+            This is a required field.
+          </span>
+        </label>
+
+        <!-- Height Box -->
+
+        <label>Height in Inches
+          <input type="text" placeholder="1234" aria-describedby="exampleHelpTextNumber" required pattern="number"
+            name="height" id="height">
+          <span class="form-error">
+            This is a required field.
+          </span>
+        </label>
+
+        <!-- Weight Box -->
+
+        <label>Weight in Pounds
+          <input type="text" placeholder="1234" aria-describedby="exampleHelpTextNumber" required pattern="number"
+            name="weight" id="weight">
+          <span class="form-error">
+            This is a required field.
+          </span>
+        </label>
+
+        <!-- Activity Box -->
+
+        <label name="af">Activity Level
+          <select id="af" required>
+            <option value="1.15">Sedentary: little or no exercise</option>
+            <option value="1.2">Light Activity: 1 to 3 hours of exercise or sports per week</option>
+            <option value="1.4">Moderate Activity: 4 to 6 hours of exercise or sports per week</option>
+            <option value="1.6">Very Active: 7 to 9 hours of exercise or sports per week</option>
+            <option value="1.8">Extra Active: 10+ hours of exercise or sports per week</option>
+          </select>
+        </label>
       </div>
-    </div>
+      <!-- </form> -->
 
-    <h1>Calorie Calculator and Meal Plan Generator</h1>
-    <hr>
+    </section>
+
+
+
     <br>
+    <hr>
 
-   
-    <h3>Lets Get Started by Entering in the Following Information:</h3>
-    
-    <div class="cell medium-6">
-      <label>Gender
-        <select id="select" required>
-          <option id="male" value="male">Male</option>
-          <option id="female" value="female">Female</option>
-        </select>
-      </label>
-    </div>
-  </div>
-  
-  <form data-abide novalidate>
-    <div class="cell small-12">
-      <label>Age
-        <input type="text" placeholder="1234" aria-describedby="exampleHelpTextNumber" required pattern="number" name="age" id="age">
-        <span class="form-error">
-          Yo, you had better fill this out, it's required.
-        </span>
-      </label>
-      <p class="help-text" id="exampleHelpTextNumber">Here's how you use this input field!</p>
-    </div>
+    <!-- Goal Buttons -->
 
+    <section class="container-dos">
+      <h3>What is your goal?</h3>
+      <div class="input-box">
+        <div class="btns" id="goal-buttons" class="button-group">
+          <a id="loss-button" class="button">Weight Loss</a>
+          <a id="maintain-button" class="button">Maintain Current Weight</a>
+          <a id="gain-button" class="button">Weight Gain</a>
+        </div>
+        <div class="btns">
+          <form>
+            <div class="callout success">
+              <h5>This is your calorie needs based on the goal you selected:</h5>
+              <p name="mifflin" id="mifflin"></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
 
+    <br>
+    <hr>
 
-    <div class="cell small-12">
-      <label>Height in Inches
-        <input type="text" placeholder="1234" aria-describedby="exampleHelpTextNumber" required pattern="number" name="height" id="height">
-        <span class="form-error">
-          Yo, you had better fill this out, it's required.
-        </span>
-      </label>
-      <p class="help-text" id="exampleHelpTextNumber">Here's how you use this input field!</p>
-    </div>
+    <h3>Now, Lets Create a Meal Plan Based on Your Calorie Needs:</h3>
+    <br>
+    <!-- Magic Meal Plan -->
 
-    
-    <div class="cell small-12">
-      <label>Weight in Pounds
-        <input type="text" placeholder="1234" aria-describedby="exampleHelpTextNumber" required pattern="number" name="weight" id="weight">
-        <span class="form-error">
-          Yo, you had better fill this out, it's required.
-        </span>
-      </label>
-      <p class="help-text" id="exampleHelpTextNumber">Here's how you use this input field!</p>
-    </div>
+    <section class="container-dos">
+      <div class="button" id="mealBtn" class="button" href="#0">Magic Meal Plan Generating Button
+      </div>
 
+      <div id="meal-plan"></div>
+
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p id="modal">Meal plan has been generated. Please scroll down</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
 
-   <div class="cell medium-6">
-     <label name="af">Activity Level 
-      <select id="af" required>
-      <option value="1.15">Sedentary: little or no exercise</option>
-      <option value="1.2">Light Activity: 1 to 3 hours of exercise or sports per week</option>
-      <option value="1.4">Moderate Activity: 4 to 6 hours of exercise or sports per week</option>
-      <option value="1.6">Very Active: 7 to 9 hours of exercise or sports per week</option>
-      <option value="1.8">Extra Active: 10+ hours of exercise or sports per week</option>
-      </select>
-     </label>
-   </div>
+  <!-- Compressed JavaScript -->
 
-</form>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"></script>
+  <script src="./Assets/JavaScript/script.js"></script>
 
+</body>
 
-<br>
-<hr>
-<h3>What is your goal?</h3>
-
-<div id="goal-buttons" class="button-group">
-  <a id="loss-button" class="button">Weight Loss</a>
-  <a id="maintain-button" class="button">Maintain Current Weight</a>
-  <a id="gain-button" class="button">Weight Gain</a>
-</div>
-
-<form>
-<div class="callout success">
-  <h5>This is your calorie needs based on the goal you selected:</h5>
-  <p name="mifflin" id="mifflin"></p>
-</div>
-</form>
-
-<br>
-<hr>
-
-<h3>Now, Lets Create a Meal Plan Based on Your Calorie Needs:</h3>
-<br>
-<a id="mealBtn" class="expanded button" href="#0">Magic Meal Plan Generating Button</a>
-
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Meal plan has been generated. Please scroll down</p>
-  </div>
-
-</div>
-
-<div id= meal-plan></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Compressed JavaScript -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
-<script src="script.js"></script>
-
-  </body>
 </html>
